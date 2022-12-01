@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; patch-denoise  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+    <p class="title logo__title">patch-denoise  documentation</p>
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="denoisers.html">
+                        LLR Denosing methods
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="modules/index.html">
+                        denoiser
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="denoisers.html">
+                        LLR Denosing methods
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="modules/index.html">
+                        denoiser
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#Z"><strong>Z</strong></a>
+ 
+</div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank._atn_shrink">_atn_shrink() (in module denoiser.space_time.lowrank)</a>
+</li>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank._get_gamma_tau">_get_gamma_tau() (in module denoiser.space_time.lowrank)</a>
+</li>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank._get_gamma_tau_qut">_get_gamma_tau_qut() (in module denoiser.space_time.lowrank)</a>
+</li>
+      <li><a href="modules/denoiser.simulation.html#denoiser.simulation.phantom._hamming1d">_hamming1d() (in module denoiser.simulation.phantom)</a>
+</li>
+      <li><a href="modules/denoiser.simulation.html#denoiser.simulation.phantom._mr_relaxation_parameters">_mr_relaxation_parameters() (in module denoiser.simulation.phantom)</a>
+</li>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank._opt_fro_shrink">_opt_fro_shrink() (in module denoiser.space_time.lowrank)</a>
+</li>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank._opt_loss_x">_opt_loss_x() (in module denoiser.space_time.lowrank)</a>
+</li>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank._opt_nuc_shrink">_opt_nuc_shrink() (in module denoiser.space_time.lowrank)</a>
+</li>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank._opt_ope_shrink">_opt_ope_shrink() (in module denoiser.space_time.lowrank)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.base.BaseSpaceTimeDenoiser._patch_processing">_patch_processing() (denoiser.space_time.base.BaseSpaceTimeDenoiser method)</a>
+
+      <ul>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.BaseSpaceTimeDenoiser._patch_processing">(denoiser.space_time.BaseSpaceTimeDenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.HybridPCADenoiser._patch_processing">(denoiser.space_time.HybridPCADenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.HybridPCADenoiser._patch_processing">(denoiser.space_time.lowrank.HybridPCADenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.MPPCADenoiser._patch_processing">(denoiser.space_time.lowrank.MPPCADenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.RawSVDDenoiser._patch_processing">(denoiser.space_time.lowrank.RawSVDDenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.MPPCADenoiser._patch_processing">(denoiser.space_time.MPPCADenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.RawSVDDenoiser._patch_processing">(denoiser.space_time.RawSVDDenoiser method)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank._sure_atn_cost">_sure_atn_cost() (in module denoiser.space_time.lowrank)</a>
+</li>
+      <li><a href="modules/denoiser.viz.html#denoiser.viz.utils._zigzag">_zigzag() (in module denoiser.viz.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.html#denoiser.denoise.adaptive_thresholding">adaptive_thresholding() (in module denoiser.denoise)</a>
+</li>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.AdaptiveDenoiser">AdaptiveDenoiser (class in denoiser.space_time.lowrank)</a>
+</li>
+      <li><a href="modules/denoiser.simulation.html#denoiser.simulation.activations.add_activations">add_activations() (in module denoiser.simulation.activations)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.simulation.html#denoiser.simulation.noise.add_temporal_gaussian_noise">add_temporal_gaussian_noise() (in module denoiser.simulation.noise)</a>
+</li>
+      <li><a href="modules/denoiser.simulation.html#denoiser.simulation.noise.add_temporal_rician_noise">add_temporal_rician_noise() (in module denoiser.simulation.noise)</a>
+</li>
+      <li><a href="modules/denoiser.viz.html#denoiser.viz.utils.array2zigzag">array2zigzag() (in module denoiser.viz.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.BaseSpaceTimeDenoiser">BaseSpaceTimeDenoiser (class in denoiser.space_time)</a>
+
+      <ul>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.base.BaseSpaceTimeDenoiser">(class in denoiser.space_time.base)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.viz.html#denoiser.viz.plots.carpet_plot">carpet_plot() (in module denoiser.viz.plots)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.base.BaseSpaceTimeDenoiser.denoise">denoise() (denoiser.space_time.base.BaseSpaceTimeDenoiser method)</a>
+
+      <ul>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.BaseSpaceTimeDenoiser.denoise">(denoiser.space_time.BaseSpaceTimeDenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.HybridPCADenoiser.denoise">(denoiser.space_time.HybridPCADenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.AdaptiveDenoiser.denoise">(denoiser.space_time.lowrank.AdaptiveDenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.HybridPCADenoiser.denoise">(denoiser.space_time.lowrank.HybridPCADenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.NordicDenoiser.denoise">(denoiser.space_time.lowrank.NordicDenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.OptimalSVDDenoiser.denoise">(denoiser.space_time.lowrank.OptimalSVDDenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.RawSVDDenoiser.denoise">(denoiser.space_time.lowrank.RawSVDDenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.NordicDenoiser.denoise">(denoiser.space_time.NordicDenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.OptimalSVDDenoiser.denoise">(denoiser.space_time.OptimalSVDDenoiser method)</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.RawSVDDenoiser.denoise">(denoiser.space_time.RawSVDDenoiser method)</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser
+
+      <ul>
+        <li><a href="modules/denoiser.html#module-denoiser">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.bindings
+
+      <ul>
+        <li><a href="modules/denoiser.bindings.html#module-denoiser.bindings">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.bindings.utils
+
+      <ul>
+        <li><a href="modules/denoiser.bindings.html#module-denoiser.bindings.utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.denoise
+
+      <ul>
+        <li><a href="modules/denoiser.html#module-denoiser.denoise">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.simulation
+
+      <ul>
+        <li><a href="modules/denoiser.simulation.html#module-denoiser.simulation">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.simulation.activations
+
+      <ul>
+        <li><a href="modules/denoiser.simulation.html#module-denoiser.simulation.activations">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    denoiser.simulation.noise
+
+      <ul>
+        <li><a href="modules/denoiser.simulation.html#module-denoiser.simulation.noise">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.simulation.phantom
+
+      <ul>
+        <li><a href="modules/denoiser.simulation.html#module-denoiser.simulation.phantom">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.space_time
+
+      <ul>
+        <li><a href="modules/denoiser.space_time.html#module-denoiser.space_time">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.space_time.base
+
+      <ul>
+        <li><a href="modules/denoiser.space_time.html#module-denoiser.space_time.base">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.space_time.lowrank
+
+      <ul>
+        <li><a href="modules/denoiser.space_time.html#module-denoiser.space_time.lowrank">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.space_time.utils
+
+      <ul>
+        <li><a href="modules/denoiser.space_time.html#module-denoiser.space_time.utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.tests
+
+      <ul>
+        <li><a href="modules/denoiser.tests.html#module-denoiser.tests">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.utils
+
+      <ul>
+        <li><a href="modules/denoiser.html#module-denoiser.utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.viz
+
+      <ul>
+        <li><a href="modules/denoiser.viz.html#module-denoiser.viz">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.viz.plots
+
+      <ul>
+        <li><a href="modules/denoiser.viz.html#module-denoiser.viz.plots">module</a>
+</li>
+      </ul></li>
+      <li>
+    denoiser.viz.utils
+
+      <ul>
+        <li><a href="modules/denoiser.viz.html#module-denoiser.viz.utils">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.utils.eig_analysis">eig_analysis() (in module denoiser.space_time.utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.utils.eig_synthesis">eig_synthesis() (in module denoiser.space_time.utils)</a>
+</li>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.utils.estimate_noise">estimate_noise() (in module denoiser.space_time.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.simulation.html#denoiser.simulation.phantom.g_factor_map">g_factor_map() (in module denoiser.simulation.phantom)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.utils.get_patch_locs">get_patch_locs() (in module denoiser.space_time.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.html#denoiser.denoise.hybrid_pca">hybrid_pca() (in module denoiser.denoise)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.HybridPCADenoiser">HybridPCADenoiser (class in denoiser.space_time)</a>
+
+      <ul>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.HybridPCADenoiser">(class in denoiser.space_time.lowrank)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.html#denoiser.utils.load_complex_nifti">load_complex_nifti() (in module denoiser.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.utils.marshenko_pastur_median">marshenko_pastur_median() (in module denoiser.space_time.utils)</a>
+</li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="modules/denoiser.html#module-denoiser">denoiser</a>
+</li>
+        <li><a href="modules/denoiser.bindings.html#module-denoiser.bindings">denoiser.bindings</a>
+</li>
+        <li><a href="modules/denoiser.bindings.html#module-denoiser.bindings.utils">denoiser.bindings.utils</a>
+</li>
+        <li><a href="modules/denoiser.html#module-denoiser.denoise">denoiser.denoise</a>
+</li>
+        <li><a href="modules/denoiser.simulation.html#module-denoiser.simulation">denoiser.simulation</a>
+</li>
+        <li><a href="modules/denoiser.simulation.html#module-denoiser.simulation.activations">denoiser.simulation.activations</a>
+</li>
+        <li><a href="modules/denoiser.simulation.html#module-denoiser.simulation.noise">denoiser.simulation.noise</a>
+</li>
+        <li><a href="modules/denoiser.simulation.html#module-denoiser.simulation.phantom">denoiser.simulation.phantom</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#module-denoiser.space_time">denoiser.space_time</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#module-denoiser.space_time.base">denoiser.space_time.base</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#module-denoiser.space_time.lowrank">denoiser.space_time.lowrank</a>
+</li>
+        <li><a href="modules/denoiser.space_time.html#module-denoiser.space_time.utils">denoiser.space_time.utils</a>
+</li>
+        <li><a href="modules/denoiser.tests.html#module-denoiser.tests">denoiser.tests</a>
+</li>
+        <li><a href="modules/denoiser.html#module-denoiser.utils">denoiser.utils</a>
+</li>
+        <li><a href="modules/denoiser.viz.html#module-denoiser.viz">denoiser.viz</a>
+</li>
+        <li><a href="modules/denoiser.viz.html#module-denoiser.viz.plots">denoiser.viz.plots</a>
+</li>
+        <li><a href="modules/denoiser.viz.html#module-denoiser.viz.utils">denoiser.viz.utils</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.html#denoiser.denoise.mp_pca">mp_pca() (in module denoiser.denoise)</a>
+</li>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.MPPCADenoiser">MPPCADenoiser (class in denoiser.space_time)</a>
+
+      <ul>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.MPPCADenoiser">(class in denoiser.space_time.lowrank)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/denoiser.simulation.html#denoiser.simulation.phantom.mr_ellipsoid_parameters">mr_ellipsoid_parameters() (in module denoiser.simulation.phantom)</a>
+</li>
+      <li><a href="modules/denoiser.simulation.html#denoiser.simulation.phantom.mr_shepp_logan">mr_shepp_logan() (in module denoiser.simulation.phantom)</a>
+</li>
+      <li><a href="modules/denoiser.simulation.html#denoiser.simulation.phantom.mr_shepp_logan_t2_star">mr_shepp_logan_t2_star() (in module denoiser.simulation.phantom)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.html#denoiser.denoise.nordic">nordic() (in module denoiser.denoise)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.NordicDenoiser">NordicDenoiser (class in denoiser.space_time)</a>
+
+      <ul>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.NordicDenoiser">(class in denoiser.space_time.lowrank)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.html#denoiser.denoise.optimal_thresholding">optimal_thresholding() (in module denoiser.denoise)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.OptimalSVDDenoiser">OptimalSVDDenoiser (class in denoiser.space_time)</a>
+
+      <ul>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.OptimalSVDDenoiser">(class in denoiser.space_time.lowrank)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.html#denoiser.denoise.raw_svt">raw_svt() (in module denoiser.denoise)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.RawSVDDenoiser">RawSVDDenoiser (class in denoiser.space_time)</a>
+
+      <ul>
+        <li><a href="modules/denoiser.space_time.html#denoiser.space_time.lowrank.RawSVDDenoiser">(class in denoiser.space_time.lowrank)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.utils.svd_analysis">svd_analysis() (in module denoiser.space_time.utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.space_time.html#denoiser.space_time.utils.svd_synthesis">svd_synthesis() (in module denoiser.space_time.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Z">Z</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/denoiser.viz.html#denoiser.viz.utils.zigzag2array">zigzag2array() (in module denoiser.viz.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022, Pierre-Antoine Comby.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

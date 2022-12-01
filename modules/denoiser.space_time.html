@@ -1,0 +1,1648 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>denoiser.space_time package &#8212; patch-denoise  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/denoiser.space_time';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="denoiser.tests package" href="denoiser.tests.html" />
+    <link rel="prev" title="denoiser.simulation package" href="denoiser.simulation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+    <p class="title logo__title">patch-denoise  documentation</p>
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../denoisers.html">
+                        LLR Denosing methods
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        denoiser
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../denoisers.html">
+                        LLR Denosing methods
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        denoiser
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="denoiser.html">denoiser package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="denoiser.bindings.html">denoiser.bindings package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="denoiser.simulation.html">denoiser.simulation package</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">denoiser.space_time package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="denoiser.tests.html">denoiser.tests package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="denoiser.viz.html">denoiser.viz package</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="denoiser-space-time-package">
+<h1>denoiser.space_time package<a class="headerlink" href="#denoiser-space-time-package" title="Permalink to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="module-denoiser.space_time.base">
+<span id="denoiser-space-time-base-module"></span><h2>denoiser.space_time.base module<a class="headerlink" href="#module-denoiser.space_time.base" title="Permalink to this heading">#</a></h2>
+<p>Base Structure for patch-based denoising on spatio-temporal dimension.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.base.BaseSpaceTimeDenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.base.</span></span><span class="sig-name descname"><span class="pre">BaseSpaceTimeDenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weighted'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/base.html#BaseSpaceTimeDenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Base Class for Patch-based denoising methods for dynamical data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – the overlap of each pixel</p></li>
+<li><p><strong>recombination</strong> (<em>str</em><em>, </em><em>optional</em>) – The recombination method of the patch. “weighted”, “average” or “center”.
+default “weighted”.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.base.BaseSpaceTimeDenoiser._patch_processing">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_patch_processing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/base.html#BaseSpaceTimeDenoiser._patch_processing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser._patch_processing" title="Permalink to this definition">#</a></dt>
+<dd><p>Process a patch.</p>
+<p>Implemented by child classes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.base.BaseSpaceTimeDenoiser.denoise">
+<span class="sig-name descname"><span class="pre">denoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/base.html#BaseSpaceTimeDenoiser.denoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser.denoise" title="Permalink to this definition">#</a></dt>
+<dd><p>Denoise the input_data, according to mask.</p>
+<p>Patches are extracted sequentially and process by the implemented
+<cite>_patch_processing</cite> function.
+Only patches which have at least a voxel in the mask ROI are processed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<em>numpy.ndarray</em>) – The input data to denoise. It should be a ND array, and the last
+dimension should a dynamically varying one (eg time).</p></li>
+<li><p><strong>mask</strong> (<em>numpy.ndarray</em>) – A boolean array, defining a ROI in the volume. Only patch with voxels in the ROI
+will be processed.</p></li>
+<li><p><strong>mask_threshold</strong> (<em>int</em>) – percentage of the path that has to be in the mask so that the patch is processed.
+if mask_threshold = -1, all the patch are processed, if mask_threshold=100, all
+the voxels of the patch needs to be in the mask</p></li>
+<li><p><strong>denoiser_kwargs</strong> (<em>dict</em>) – Extra runtime parameters passed to the patch denoising method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>output_data: numpy.ndarray</dt><dd><p>The denoised data</p>
+</dd>
+<dt>patch_weight: numpy.ndarray</dt><dd><p>The weight associated to each voxel.</p>
+</dd>
+<dt>noise_std_map: numpy.ndarray</dt><dd><p>If available, a noise std estimation for each voxel.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-denoiser.space_time.lowrank">
+<span id="denoiser-space-time-lowrank-module"></span><h2>denoiser.space_time.lowrank module<a class="headerlink" href="#module-denoiser.space_time.lowrank" title="Permalink to this heading">#</a></h2>
+<p>Low Rank Denoising methods.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.AdaptiveDenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">AdaptiveDenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SURE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weighted'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbsim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#AdaptiveDenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.AdaptiveDenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser" title="denoiser.space_time.base.BaseSpaceTimeDenoiser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSpaceTimeDenoiser</span></code></a></p>
+<p>Adaptive Denoiser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – The amount of overlap between patches in each direction</p></li>
+<li><p><strong>recombination</strong> (<em>str</em>) – The method of reweighting patches. either “weighted” or “average”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.AdaptiveDenoiser.denoise">
+<span class="sig-name descname"><span class="pre">denoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#AdaptiveDenoiser.denoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.AdaptiveDenoiser.denoise" title="Permalink to this definition">#</a></dt>
+<dd><p>Adaptive denoiser.</p>
+<p>Perform the denoising using the adaptive trace norm estimator.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.HybridPCADenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">HybridPCADenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weighted'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#HybridPCADenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.HybridPCADenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser" title="denoiser.space_time.base.BaseSpaceTimeDenoiser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSpaceTimeDenoiser</span></code></a></p>
+<p>Denoising using the Hybrid-PCA thresholding method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – The amount of overlap between patches in each direction</p></li>
+<li><p><strong>recombination</strong> (<em>str</em>) – The method of reweighting patches. either “weighed” or “average”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.HybridPCADenoiser._patch_processing">
+<span class="sig-name descname"><span class="pre">_patch_processing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_apriori</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#HybridPCADenoiser._patch_processing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.HybridPCADenoiser._patch_processing" title="Permalink to this definition">#</a></dt>
+<dd><p>Process a pach with the Hybrid-PCA method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.HybridPCADenoiser.denoise">
+<span class="sig-name descname"><span class="pre">denoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#HybridPCADenoiser.denoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.HybridPCADenoiser.denoise" title="Permalink to this definition">#</a></dt>
+<dd><p>Denoise using the Hybrid-PCA method.</p>
+<p>Along with the input data a noise std map or value should be provided.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.MPPCADenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">MPPCADenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_scale</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#MPPCADenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.MPPCADenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser" title="denoiser.space_time.base.BaseSpaceTimeDenoiser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSpaceTimeDenoiser</span></code></a></p>
+<p>Denoising using the MP-PCA threshoding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – The amount of overlap between patches in each direction</p></li>
+<li><p><strong>recombination</strong> (<em>str</em>) – The method of reweighting patches. either “weighed” or “average”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.MPPCADenoiser._patch_processing">
+<span class="sig-name descname"><span class="pre">_patch_processing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#MPPCADenoiser._patch_processing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.MPPCADenoiser._patch_processing" title="Permalink to this definition">#</a></dt>
+<dd><p>Process a pach with the MP-PCA method.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.NordicDenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">NordicDenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weighted'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#NordicDenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.NordicDenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#denoiser.space_time.lowrank.RawSVDDenoiser" title="denoiser.space_time.lowrank.RawSVDDenoiser"><code class="xref py py-class docutils literal notranslate"><span class="pre">RawSVDDenoiser</span></code></a></p>
+<p>Denoising using the Hybrid-PCA thresholding method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – The amount of overlap between patches in each direction</p></li>
+<li><p><strong>recombination</strong> (<em>str</em>) – The method of reweighting patches. either “weighed” or “average”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.NordicDenoiser.denoise">
+<span class="sig-name descname"><span class="pre">denoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#NordicDenoiser.denoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.NordicDenoiser.denoise" title="Permalink to this definition">#</a></dt>
+<dd><p>Denoise using the NORDIC method.</p>
+<p>Along with the input data a noise stp map or value should be provided.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.OptimalSVDDenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">OptimalSVDDenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fro'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weighted'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#OptimalSVDDenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.OptimalSVDDenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser" title="denoiser.space_time.base.BaseSpaceTimeDenoiser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSpaceTimeDenoiser</span></code></a></p>
+<p>Optimal Shrinkage of singular values for a specific norm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – The amount of overlap between patches in each direction</p></li>
+<li><p><strong>loss</strong> (<em>str</em>) – The loss determines the choise of the optimal thresholding function
+associated to it. The losses <cite>“fro”</cite>, <cite>“nuc”</cite> and <cite>“op”</cite> are supported,
+for the frobenius, nuclear and operator norm, respectively.</p></li>
+<li><p><strong>recombination</strong> (<em>str</em>) – The method of reweighting patches. either “weighted” or “average”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.OptimalSVDDenoiser.denoise">
+<span class="sig-name descname"><span class="pre">denoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps_marshenko_pastur</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-07</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#OptimalSVDDenoiser.denoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.OptimalSVDDenoiser.denoise" title="Permalink to this definition">#</a></dt>
+<dd><p>Denoise the input_data, according to mask.</p>
+<p>Patches are extracted sequentially and process by the implemented
+<cite>_patch_processing</cite> function.
+Only patches which have at least a voxel in the mask ROI are processed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<em>numpy.ndarray</em>) – The input data to denoise. It should be a ND array, and the last
+dimension should a dynamically varying one (eg time).</p></li>
+<li><p><strong>mask</strong> (<em>numpy.ndarray</em>) – A boolean array, defining a ROI in the volume. Only patch with voxels in the ROI
+will be processed.</p></li>
+<li><p><strong>mask_threshold</strong> (<em>int</em>) – percentage of the path that has to be in the mask so that the patch is processed.
+if mask_threshold = -1, all the patch are processed, if mask_threshold=100, all
+the voxels of the patch needs to be in the mask</p></li>
+<li><p><strong>denoiser_kwargs</strong> (<em>dict</em>) – Extra runtime parameters passed to the patch denoising method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>output_data: numpy.ndarray</dt><dd><p>The denoised data</p>
+</dd>
+<dt>patch_weight: numpy.ndarray</dt><dd><p>The weight associated to each voxel.</p>
+</dd>
+<dt>noise_std_map: numpy.ndarray</dt><dd><p>If available, a noise std estimation for each voxel.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.RawSVDDenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">RawSVDDenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weighted'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#RawSVDDenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.RawSVDDenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser" title="denoiser.space_time.base.BaseSpaceTimeDenoiser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSpaceTimeDenoiser</span></code></a></p>
+<p>Classical Patch wise singular value thresholding denoiser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – The amount of overlap between patches in each direction</p></li>
+<li><p><strong>recombination</strong> (<em>str</em>) – The method of reweighting patches. either “weighed” or “average”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.RawSVDDenoiser._patch_processing">
+<span class="sig-name descname"><span class="pre">_patch_processing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#RawSVDDenoiser._patch_processing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.RawSVDDenoiser._patch_processing" title="Permalink to this definition">#</a></dt>
+<dd><p>Denoise a patch using the singular value thresholding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch</strong> (<em>numpy.ndarray</em>) – The patch to process</p></li>
+<li><p><strong>threshold_value</strong> (<em>float</em>) – The thresholding value for the patch</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>patch_new</strong> (<em>numpy.ndarray</em>) – The processed patch.</p></li>
+<li><p><strong>weights</strong> (<em>numpy.ndarray</em>) – The weight associated with the patch.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank.RawSVDDenoiser.denoise">
+<span class="sig-name descname"><span class="pre">denoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#RawSVDDenoiser.denoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank.RawSVDDenoiser.denoise" title="Permalink to this definition">#</a></dt>
+<dd><p>Denoise the input_data, according to mask.</p>
+<p>Patches are extracted sequentially and process by the implemented
+<cite>_patch_processing</cite> function.
+Only patches which have at least a voxel in the mask ROI are processed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<em>numpy.ndarray</em>) – The input data to denoise. It should be a ND array, and the last
+dimension should a dynamically varying one (eg time).</p></li>
+<li><p><strong>mask</strong> (<em>numpy.ndarray</em>) – A boolean array, defining a ROI in the volume. Only patch with voxels in the ROI
+will be processed.</p></li>
+<li><p><strong>mask_threshold</strong> (<em>int</em>) – percentage of the path that has to be in the mask so that the patch is processed.
+if mask_threshold = -1, all the patch are processed, if mask_threshold=100, all
+the voxels of the patch needs to be in the mask</p></li>
+<li><p><strong>denoiser_kwargs</strong> (<em>dict</em>) – Extra runtime parameters passed to the patch denoising method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>output_data: numpy.ndarray</dt><dd><p>The denoised data</p>
+</dd>
+<dt>patch_weight: numpy.ndarray</dt><dd><p>The weight associated to each voxel.</p>
+</dd>
+<dt>noise_std_map: numpy.ndarray</dt><dd><p>If available, a noise std estimation for each voxel.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank._atn_shrink">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">_atn_shrink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">singvals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#_atn_shrink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank._atn_shrink" title="Permalink to this definition">#</a></dt>
+<dd><p>Adaptive trace norm shrinkage.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank._get_gamma_tau">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">_get_gamma_tau</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sing_vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#_get_gamma_tau"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank._get_gamma_tau" title="Permalink to this definition">#</a></dt>
+<dd><p>Estimate gamma and tau.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank._get_gamma_tau_qut">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">_get_gamma_tau_qut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sing_vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbsim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#_get_gamma_tau_qut"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank._get_gamma_tau_qut" title="Permalink to this definition">#</a></dt>
+<dd><p>Estimate gamma and tau using the quantile method.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank._opt_fro_shrink">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">_opt_fro_shrink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">singvals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#_opt_fro_shrink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank._opt_fro_shrink" title="Permalink to this definition">#</a></dt>
+<dd><p>Perform optimal threshold of singular values for frobenius norm.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank._opt_loss_x">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">_opt_loss_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#_opt_loss_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank._opt_loss_x" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute (8) of donoho2017.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank._opt_nuc_shrink">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">_opt_nuc_shrink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">singvals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#_opt_nuc_shrink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank._opt_nuc_shrink" title="Permalink to this definition">#</a></dt>
+<dd><p>Perform optimal threshold of singular values for nuclear norm.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank._opt_ope_shrink">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">_opt_ope_shrink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">singvals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#_opt_ope_shrink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank._opt_ope_shrink" title="Permalink to this definition">#</a></dt>
+<dd><p>Perform optimal threshold of singular values for operator norm.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.lowrank._sure_atn_cost">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.lowrank.</span></span><span class="sig-name descname"><span class="pre">_sure_atn_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sing_vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#_sure_atn_cost"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.lowrank._sure_atn_cost" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the SURE cost function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>np.ndarray</em>) – </p></li>
+<li><p><strong>sing_vals</strong> (<em>singular values</em><em> of </em><em>X</em>) – </p></li>
+<li><p><strong>gamma</strong> (<em>float</em>) – </p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – </p></li>
+<li><p><strong>tau</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-denoiser.space_time.utils">
+<span id="denoiser-space-time-utils-module"></span><h2>denoiser.space_time.utils module<a class="headerlink" href="#module-denoiser.space_time.utils" title="Permalink to this heading">#</a></h2>
+<p>Utilities for space-time denoising.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.utils.eig_analysis">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.utils.</span></span><span class="sig-name descname"><span class="pre">eig_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_eig_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/utils.html#eig_analysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.utils.eig_analysis" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the eigen values and vectors of the autocorrelation of the patch.</p>
+<p>This method is faster than the svd, but the eigen values
+are in increasing order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<em>np.ndarray</em>) – A 2D Array</p></li>
+<li><p><strong>max_eig_val</strong> (<em>int</em><em>, </em><em>optional</em>) – For faster results, only the <code class="docutils literal notranslate"><span class="pre">max_eig_val</span></code> biggest eigenvalues are
+computed. default = 10</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>A</strong> (<em>numpy.ndarray</em>) – The centered patch A = X - M</p></li>
+<li><p><strong>d</strong> (<em>numpy.ndarray</em>) – The eigenvalues of A^H A</p></li>
+<li><p><strong>W</strong> (<em>numpy.ndarray</em>) – The eigenvector matrix of A^H A</p></li>
+<li><p><strong>M</strong> (<em>numpy.ndarray</em>) – The mean of the patch along the time axis</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.utils.eig_synthesis">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.utils.</span></span><span class="sig-name descname"><span class="pre">eig_synthesis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_centered</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eig_vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/utils.html#eig_synthesis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.utils.eig_synthesis" title="Permalink to this definition">#</a></dt>
+<dd><p>Reconstruction the denoise patch with truncated eigen decomposition.</p>
+<p>This implements equations (1) and (2) of manjon2013</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.utils.estimate_noise">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.utils.</span></span><span class="sig-name descname"><span class="pre">estimate_noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/utils.html#estimate_noise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.utils.estimate_noise" title="Permalink to this definition">#</a></dt>
+<dd><p>Estimate the temporal noise standard deviation of a noise only sequence.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.utils.get_patch_locs">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.utils.</span></span><span class="sig-name descname"><span class="pre">get_patch_locs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_ovl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/utils.html#get_patch_locs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.utils.get_patch_locs" title="Permalink to this definition">#</a></dt>
+<dd><p>Get all the patch top-left corner locations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vol_shape</strong> (<em>tuple</em>) – The volume shape</p></li>
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – The overlap of patch for each dimension.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>All the patch top-left corner locations.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.utils.marshenko_pastur_median">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.utils.</span></span><span class="sig-name descname"><span class="pre">marshenko_pastur_median</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-07</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/utils.html#marshenko_pastur_median"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.utils.marshenko_pastur_median" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the median of the Marchenko-Pastur Distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beta</strong> (<em>float</em>) – aspect ratio of a matrix.</p></li>
+<li><p><strong>eps</strong> (<em>float</em>) – Precision Parameter</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>float</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the estimated median</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method Solve <span class="math notranslate nohighlight">\(F(x) = 1/2\)</span> by dichotomy with
+.. math</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> \<span class="n">int_</span><span class="p">{</span>\<span class="n">beta_</span><span class="o">-</span><span class="p">}</span><span class="o">^</span><span class="p">{</span><span class="n">x</span><span class="p">}</span> \<span class="n">frac</span><span class="p">{</span>\<span class="n">sqrt</span><span class="p">{(</span>\<span class="n">beta_</span><span class="o">+-</span><span class="n">t</span><span class="p">)(</span><span class="n">t</span><span class="o">-</span>\<span class="n">beta_</span><span class="o">-</span><span class="p">)}}{</span><span class="mi">2</span>\<span class="n">pi</span>\<span class="n">beta</span> <span class="n">t</span><span class="p">}</span> <span class="n">dt</span>
+</pre></div>
+</div>
+<p>The integral is computed using scipy.integrate.quad</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.utils.svd_analysis">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.utils.</span></span><span class="sig-name descname"><span class="pre">svd_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/utils.html#svd_analysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.utils.svd_analysis" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the centered SVD decomposition.</p>
+<p>U, S, Vt and M are compute such that:
+<code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">=</span> <span class="pre">U</span> <span class="pre">&#64;</span> <span class="pre">(S</span> <span class="pre">*</span> <span class="pre">Vt)</span> <span class="pre">+</span> <span class="pre">M.</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>input_data</strong> (<em>numpy.ndarray</em>) – The patch</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>u_vec, s_vals, v_vec, mean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="denoiser.space_time.utils.svd_synthesis">
+<span class="sig-prename descclassname"><span class="pre">denoiser.space_time.utils.</span></span><span class="sig-name descname"><span class="pre">svd_synthesis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/utils.html#svd_synthesis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.utils.svd_synthesis" title="Permalink to this definition">#</a></dt>
+<dd><p>Reconstruct <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">=</span> <span class="pre">(U</span> <span class="pre">&#64;</span> <span class="pre">(S</span> <span class="pre">*</span> <span class="pre">V))</span> <span class="pre">+</span> <span class="pre">M</span></code> with only the max_idx greatest component.</p>
+<p>U, S, V must be sorted in decreasing order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u_vec</strong> (<em>numpy.ndarray</em>) – </p></li>
+<li><p><strong>s_vals</strong> (<em>numpy.ndarray</em>) – </p></li>
+<li><p><strong>v_vec</strong> (<em>numpy.ndarray</em>) – </p></li>
+<li><p><strong>mean</strong> (<em>numpy.ndarray</em>) – </p></li>
+<li><p><strong>idx</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>np.ndarray</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The reconstructed matrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-denoiser.space_time">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-denoiser.space_time" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.BaseSpaceTimeDenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.</span></span><span class="sig-name descname"><span class="pre">BaseSpaceTimeDenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weighted'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/base.html#BaseSpaceTimeDenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.BaseSpaceTimeDenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Base Class for Patch-based denoising methods for dynamical data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – the overlap of each pixel</p></li>
+<li><p><strong>recombination</strong> (<em>str</em><em>, </em><em>optional</em>) – The recombination method of the patch. “weighted”, “average” or “center”.
+default “weighted”.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.BaseSpaceTimeDenoiser._patch_processing">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_patch_processing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/base.html#BaseSpaceTimeDenoiser._patch_processing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.BaseSpaceTimeDenoiser._patch_processing" title="Permalink to this definition">#</a></dt>
+<dd><p>Process a patch.</p>
+<p>Implemented by child classes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.BaseSpaceTimeDenoiser.denoise">
+<span class="sig-name descname"><span class="pre">denoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/base.html#BaseSpaceTimeDenoiser.denoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.BaseSpaceTimeDenoiser.denoise" title="Permalink to this definition">#</a></dt>
+<dd><p>Denoise the input_data, according to mask.</p>
+<p>Patches are extracted sequentially and process by the implemented
+<cite>_patch_processing</cite> function.
+Only patches which have at least a voxel in the mask ROI are processed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<em>numpy.ndarray</em>) – The input data to denoise. It should be a ND array, and the last
+dimension should a dynamically varying one (eg time).</p></li>
+<li><p><strong>mask</strong> (<em>numpy.ndarray</em>) – A boolean array, defining a ROI in the volume. Only patch with voxels in the ROI
+will be processed.</p></li>
+<li><p><strong>mask_threshold</strong> (<em>int</em>) – percentage of the path that has to be in the mask so that the patch is processed.
+if mask_threshold = -1, all the patch are processed, if mask_threshold=100, all
+the voxels of the patch needs to be in the mask</p></li>
+<li><p><strong>denoiser_kwargs</strong> (<em>dict</em>) – Extra runtime parameters passed to the patch denoising method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>output_data: numpy.ndarray</dt><dd><p>The denoised data</p>
+</dd>
+<dt>patch_weight: numpy.ndarray</dt><dd><p>The weight associated to each voxel.</p>
+</dd>
+<dt>noise_std_map: numpy.ndarray</dt><dd><p>If available, a noise std estimation for each voxel.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.HybridPCADenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.</span></span><span class="sig-name descname"><span class="pre">HybridPCADenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weighted'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#HybridPCADenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.HybridPCADenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser" title="denoiser.space_time.base.BaseSpaceTimeDenoiser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSpaceTimeDenoiser</span></code></a></p>
+<p>Denoising using the Hybrid-PCA thresholding method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – The amount of overlap between patches in each direction</p></li>
+<li><p><strong>recombination</strong> (<em>str</em>) – The method of reweighting patches. either “weighed” or “average”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.HybridPCADenoiser._patch_processing">
+<span class="sig-name descname"><span class="pre">_patch_processing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_apriori</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#HybridPCADenoiser._patch_processing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.HybridPCADenoiser._patch_processing" title="Permalink to this definition">#</a></dt>
+<dd><p>Process a pach with the Hybrid-PCA method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.HybridPCADenoiser.denoise">
+<span class="sig-name descname"><span class="pre">denoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#HybridPCADenoiser.denoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.HybridPCADenoiser.denoise" title="Permalink to this definition">#</a></dt>
+<dd><p>Denoise using the Hybrid-PCA method.</p>
+<p>Along with the input data a noise std map or value should be provided.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.MPPCADenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.</span></span><span class="sig-name descname"><span class="pre">MPPCADenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_scale</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#MPPCADenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.MPPCADenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser" title="denoiser.space_time.base.BaseSpaceTimeDenoiser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSpaceTimeDenoiser</span></code></a></p>
+<p>Denoising using the MP-PCA threshoding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – The amount of overlap between patches in each direction</p></li>
+<li><p><strong>recombination</strong> (<em>str</em>) – The method of reweighting patches. either “weighed” or “average”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.MPPCADenoiser._patch_processing">
+<span class="sig-name descname"><span class="pre">_patch_processing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#MPPCADenoiser._patch_processing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.MPPCADenoiser._patch_processing" title="Permalink to this definition">#</a></dt>
+<dd><p>Process a pach with the MP-PCA method.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.NordicDenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.</span></span><span class="sig-name descname"><span class="pre">NordicDenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weighted'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#NordicDenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.NordicDenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#denoiser.space_time.lowrank.RawSVDDenoiser" title="denoiser.space_time.lowrank.RawSVDDenoiser"><code class="xref py py-class docutils literal notranslate"><span class="pre">RawSVDDenoiser</span></code></a></p>
+<p>Denoising using the Hybrid-PCA thresholding method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – The amount of overlap between patches in each direction</p></li>
+<li><p><strong>recombination</strong> (<em>str</em>) – The method of reweighting patches. either “weighed” or “average”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.NordicDenoiser.denoise">
+<span class="sig-name descname"><span class="pre">denoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#NordicDenoiser.denoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.NordicDenoiser.denoise" title="Permalink to this definition">#</a></dt>
+<dd><p>Denoise using the NORDIC method.</p>
+<p>Along with the input data a noise stp map or value should be provided.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.OptimalSVDDenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.</span></span><span class="sig-name descname"><span class="pre">OptimalSVDDenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fro'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weighted'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#OptimalSVDDenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.OptimalSVDDenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser" title="denoiser.space_time.base.BaseSpaceTimeDenoiser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSpaceTimeDenoiser</span></code></a></p>
+<p>Optimal Shrinkage of singular values for a specific norm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – The amount of overlap between patches in each direction</p></li>
+<li><p><strong>loss</strong> (<em>str</em>) – The loss determines the choise of the optimal thresholding function
+associated to it. The losses <cite>“fro”</cite>, <cite>“nuc”</cite> and <cite>“op”</cite> are supported,
+for the frobenius, nuclear and operator norm, respectively.</p></li>
+<li><p><strong>recombination</strong> (<em>str</em>) – The method of reweighting patches. either “weighted” or “average”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.OptimalSVDDenoiser.denoise">
+<span class="sig-name descname"><span class="pre">denoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps_marshenko_pastur</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-07</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#OptimalSVDDenoiser.denoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.OptimalSVDDenoiser.denoise" title="Permalink to this definition">#</a></dt>
+<dd><p>Denoise the input_data, according to mask.</p>
+<p>Patches are extracted sequentially and process by the implemented
+<cite>_patch_processing</cite> function.
+Only patches which have at least a voxel in the mask ROI are processed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<em>numpy.ndarray</em>) – The input data to denoise. It should be a ND array, and the last
+dimension should a dynamically varying one (eg time).</p></li>
+<li><p><strong>mask</strong> (<em>numpy.ndarray</em>) – A boolean array, defining a ROI in the volume. Only patch with voxels in the ROI
+will be processed.</p></li>
+<li><p><strong>mask_threshold</strong> (<em>int</em>) – percentage of the path that has to be in the mask so that the patch is processed.
+if mask_threshold = -1, all the patch are processed, if mask_threshold=100, all
+the voxels of the patch needs to be in the mask</p></li>
+<li><p><strong>denoiser_kwargs</strong> (<em>dict</em>) – Extra runtime parameters passed to the patch denoising method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>output_data: numpy.ndarray</dt><dd><p>The denoised data</p>
+</dd>
+<dt>patch_weight: numpy.ndarray</dt><dd><p>The weight associated to each voxel.</p>
+</dd>
+<dt>noise_std_map: numpy.ndarray</dt><dd><p>If available, a noise std estimation for each voxel.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="denoiser.space_time.RawSVDDenoiser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">denoiser.space_time.</span></span><span class="sig-name descname"><span class="pre">RawSVDDenoiser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weighted'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#RawSVDDenoiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.RawSVDDenoiser" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser" title="denoiser.space_time.base.BaseSpaceTimeDenoiser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSpaceTimeDenoiser</span></code></a></p>
+<p>Classical Patch wise singular value thresholding denoiser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch_shape</strong> (<em>tuple</em>) – The patch shape</p></li>
+<li><p><strong>patch_overlap</strong> (<em>tuple</em>) – The amount of overlap between patches in each direction</p></li>
+<li><p><strong>recombination</strong> (<em>str</em>) – The method of reweighting patches. either “weighed” or “average”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.RawSVDDenoiser._patch_processing">
+<span class="sig-name descname"><span class="pre">_patch_processing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#RawSVDDenoiser._patch_processing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.RawSVDDenoiser._patch_processing" title="Permalink to this definition">#</a></dt>
+<dd><p>Denoise a patch using the singular value thresholding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch</strong> (<em>numpy.ndarray</em>) – The patch to process</p></li>
+<li><p><strong>threshold_value</strong> (<em>float</em>) – The thresholding value for the patch</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>patch_new</strong> (<em>numpy.ndarray</em>) – The processed patch.</p></li>
+<li><p><strong>weights</strong> (<em>numpy.ndarray</em>) – The weight associated with the patch.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="denoiser.space_time.RawSVDDenoiser.denoise">
+<span class="sig-name descname"><span class="pre">denoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/denoiser/space_time/lowrank.html#RawSVDDenoiser.denoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#denoiser.space_time.RawSVDDenoiser.denoise" title="Permalink to this definition">#</a></dt>
+<dd><p>Denoise the input_data, according to mask.</p>
+<p>Patches are extracted sequentially and process by the implemented
+<cite>_patch_processing</cite> function.
+Only patches which have at least a voxel in the mask ROI are processed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<em>numpy.ndarray</em>) – The input data to denoise. It should be a ND array, and the last
+dimension should a dynamically varying one (eg time).</p></li>
+<li><p><strong>mask</strong> (<em>numpy.ndarray</em>) – A boolean array, defining a ROI in the volume. Only patch with voxels in the ROI
+will be processed.</p></li>
+<li><p><strong>mask_threshold</strong> (<em>int</em>) – percentage of the path that has to be in the mask so that the patch is processed.
+if mask_threshold = -1, all the patch are processed, if mask_threshold=100, all
+the voxels of the patch needs to be in the mask</p></li>
+<li><p><strong>denoiser_kwargs</strong> (<em>dict</em>) – Extra runtime parameters passed to the patch denoising method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>output_data: numpy.ndarray</dt><dd><p>The denoised data</p>
+</dd>
+<dt>patch_weight: numpy.ndarray</dt><dd><p>The weight associated to each voxel.</p>
+</dd>
+<dt>noise_std_map: numpy.ndarray</dt><dd><p>If available, a noise std estimation for each voxel.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="denoiser.simulation.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">denoiser.simulation package</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="denoiser.tests.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">denoiser.tests package</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submodules">
+   Submodules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-denoiser.space_time.base">
+   denoiser.space_time.base module
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BaseSpaceTimeDenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser._patch_processing">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseSpaceTimeDenoiser._patch_processing()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.base.BaseSpaceTimeDenoiser.denoise">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseSpaceTimeDenoiser.denoise()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-denoiser.space_time.lowrank">
+   denoiser.space_time.lowrank module
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.AdaptiveDenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       AdaptiveDenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.AdaptiveDenoiser.denoise">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         AdaptiveDenoiser.denoise()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.HybridPCADenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       HybridPCADenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.HybridPCADenoiser._patch_processing">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         HybridPCADenoiser._patch_processing()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.HybridPCADenoiser.denoise">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         HybridPCADenoiser.denoise()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.MPPCADenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MPPCADenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.MPPCADenoiser._patch_processing">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MPPCADenoiser._patch_processing()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.NordicDenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       NordicDenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.NordicDenoiser.denoise">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         NordicDenoiser.denoise()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.OptimalSVDDenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       OptimalSVDDenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.OptimalSVDDenoiser.denoise">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         OptimalSVDDenoiser.denoise()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.RawSVDDenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       RawSVDDenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.RawSVDDenoiser._patch_processing">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         RawSVDDenoiser._patch_processing()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.lowrank.RawSVDDenoiser.denoise">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         RawSVDDenoiser.denoise()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank._atn_shrink">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _atn_shrink()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank._get_gamma_tau">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _get_gamma_tau()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank._get_gamma_tau_qut">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _get_gamma_tau_qut()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank._opt_fro_shrink">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _opt_fro_shrink()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank._opt_loss_x">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _opt_loss_x()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank._opt_nuc_shrink">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _opt_nuc_shrink()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank._opt_ope_shrink">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _opt_ope_shrink()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.lowrank._sure_atn_cost">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       _sure_atn_cost()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-denoiser.space_time.utils">
+   denoiser.space_time.utils module
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.utils.eig_analysis">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       eig_analysis()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.utils.eig_synthesis">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       eig_synthesis()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.utils.estimate_noise">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       estimate_noise()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.utils.get_patch_locs">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       get_patch_locs()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.utils.marshenko_pastur_median">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       marshenko_pastur_median()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.utils.svd_analysis">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       svd_analysis()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.utils.svd_synthesis">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       svd_synthesis()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-denoiser.space_time">
+   Module contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.BaseSpaceTimeDenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BaseSpaceTimeDenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.BaseSpaceTimeDenoiser._patch_processing">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseSpaceTimeDenoiser._patch_processing()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.BaseSpaceTimeDenoiser.denoise">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseSpaceTimeDenoiser.denoise()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.HybridPCADenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       HybridPCADenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.HybridPCADenoiser._patch_processing">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         HybridPCADenoiser._patch_processing()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.HybridPCADenoiser.denoise">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         HybridPCADenoiser.denoise()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.MPPCADenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MPPCADenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.MPPCADenoiser._patch_processing">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MPPCADenoiser._patch_processing()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.NordicDenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       NordicDenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.NordicDenoiser.denoise">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         NordicDenoiser.denoise()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.OptimalSVDDenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       OptimalSVDDenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.OptimalSVDDenoiser.denoise">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         OptimalSVDDenoiser.denoise()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoiser.space_time.RawSVDDenoiser">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       RawSVDDenoiser
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.RawSVDDenoiser._patch_processing">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         RawSVDDenoiser._patch_processing()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#denoiser.space_time.RawSVDDenoiser.denoise">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         RawSVDDenoiser.denoise()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../_sources/modules/denoiser.space_time.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022, Pierre-Antoine Comby.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>
